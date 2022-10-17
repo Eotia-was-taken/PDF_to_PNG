@@ -68,6 +68,10 @@ def open_file(canvas_control: CanvasControl, width: int, height: int, transparen
 def save_pngs(canvas_control: CanvasControl, prefix: str):
 
     directory = askdirectory(initialdir=os.getcwd())
+
+    if not directory:
+        return
+    
     prefix = prefix + "_" if len(prefix) != 0 else ""
     for i, image in enumerate(canvas_control.images):
         file_path = os.path.normpath(f"{directory}/{prefix}page_{i}.png")
